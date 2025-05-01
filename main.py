@@ -5,8 +5,11 @@ def login():
     username = input("Enter your username: ")
     password = input("Enter your password: ")
     with open("plain_text.txt", "r") as file:
-        users = [line.strip().split(", ") for line in file.readlines()]
-        for user, passw in users:
+        for line in file:
+            parts = line.strip().split(", ")
+            if len(parts) != 2:
+                continue
+            user, passw = parts
             if user == username and passw == password:
                 print("Login successful!")
                 new_menu()
