@@ -1,3 +1,5 @@
+isRunning = True
+
 # user logs in
 def login():
     username = input("Enter your username: ")
@@ -27,7 +29,7 @@ def register():
             continue
 
         with open("plain_text.txt", "a") as file:
-            file.write(f"{chosen_username}, {chosen_password}\n")
+            file.write(f"\n{chosen_username}, {chosen_password}")
         print("Registration successful!")
         break
 
@@ -67,17 +69,19 @@ def change_password():
 
 # User is offered a menu
 def menu():
-    print("1. Login")
-    print("2. Register")
-    print("3. Quit")
-    selection = input("Select an option: ")
-    if selection == "1":
-        login()
-    elif selection == "2":
-        register()
-    elif selection == "3":
-        quit()
-    else:
-        print("Not a valid input.")
+    global isRunning
+    while isRunning:
+        print("1. Login")
+        print("2. Register")
+        print("3. Quit")
+        selection = input("Select an option: ")
+        if selection == "1":
+            login()
+        elif selection == "2":
+            register()
+        elif selection == "3":
+            isRunning = False
+        else:
+            print("Not a valid input.")
 
 menu()
