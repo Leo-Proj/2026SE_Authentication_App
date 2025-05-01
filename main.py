@@ -44,7 +44,7 @@ def new_menu():
     print("1. Change password")
     print("2. Logout")
     log_or_change = input("What would you like to do? ")
-    if log_or_change == 1:
+    if log_or_change == "1":
         change_password()
     elif log_or_change == "2":
         print("Logged out.")
